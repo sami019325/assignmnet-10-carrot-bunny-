@@ -2,11 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainRouting from './Components/MainRouting';
+import Home from './Components/Home/Home';
 
 const router = createBrowserRouter([
   {
     path: '/', element: <MainRouting />, children: [
-      { path: '/', element: <div>Another home</div> }
+      { path: '/', element: <Home /> }
     ]
   },
   { path: '*', element: <div>$04</div> }
