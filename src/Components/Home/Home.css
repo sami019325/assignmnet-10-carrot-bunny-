@@ -1,3 +1,30 @@
 .handwriting {
     font-family: 'Fuzzy Bubbles', cursive;
 }
+
+.home-body {
+    background-color: antiquewhite;
+    /* height: 100vh; */
+}
+
+@media screen and (min-width: 768px) {
+    .home-body {
+
+        height: 100vh;
+        animation: bgChange 10s infinite ease-in-out;
+    }
+
+    @keyframes bgChange {
+        0% {
+            background-color: antiquewhite;
+        }
+
+        50% {
+            background-color: rgb(245, 192, 128);
+        }
+
+        100% {
+            background-color: antiquewhite;
+        }
+    }
+}
