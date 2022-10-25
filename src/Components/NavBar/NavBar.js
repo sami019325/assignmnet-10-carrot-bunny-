@@ -10,7 +10,9 @@ const NavBar = () => {
         <nav className='bg-yellow-500 h-20 grid grid-cols-6 sticky top-0'>
             <div className='flex items-center justify-start pl-12 gap-3 px-3 col-span-4 md:col-span-3 '>
                 <Link to='/'> <img src={logo} className='w-12 h-12' alt="app logo a bunny" /></Link>
-                <h1 className='text-xl md:text-5xl text-slate-50 font-bold select-none'>Carrot Bunny</h1>
+                <Link to='/'>
+                    <h1 className='text-xl md:text-5xl text-slate-50 font-bold select-none'>Carrot Bunny</h1>
+                </Link>
             </div>
             <div className='col-span-2 md:col-span-3 flex  justify-center items-center'>
                 <div className={`hidden lg:block `}>

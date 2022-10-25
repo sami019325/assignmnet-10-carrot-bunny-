@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card/Card';
+import { Card, Combocard } from './Card/Card';
 
 const Course = () => {
     const course = {
@@ -8,6 +8,7 @@ const Course = () => {
     }
     return (
         <div>
+            <Combocard></Combocard>
             <Card CardData={course}></Card>
         </div>
     );
