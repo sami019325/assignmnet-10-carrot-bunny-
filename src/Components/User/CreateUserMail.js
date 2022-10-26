@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { SharedContext } from './ShareData';
 import bunny from './../../Resources/—Pngtree—bunny with carrot illustration vector_5302230.png'
 const CreateUserMail = () => {
-    const { CreateUserWithMail } = useContext(SharedContext)
+    const { CreateUserWithMail, CreateUserWithGoogle } = useContext(SharedContext)
 
     const handleCreateUser = (e) => {
         e.preventDefault()
@@ -45,6 +45,7 @@ const CreateUserMail = () => {
                     </div>
                 </div>
             </div>
+            <button onClick={CreateUserWithGoogle}>Google</button>
         </>
     );
 };

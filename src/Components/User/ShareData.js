@@ -1,6 +1,6 @@
 
 import { createContext, useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import app from '../../Firebase/Firebase.config';
 
 const auth = getAuth(app)
@@ -22,7 +22,17 @@ const ShareData = ({ children }) => {
                 console.error(errorMessage, errorCode)
             });
     }
-
+    const googlePorvider = new GoogleAuthProvider()
+    // sign in with google 
+    const CreateUserWithGoogle = () => {
+        signInWithPopup(auth, googlePorvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            }).catch((error) => {
+                const errorCode = error.code;
+            });
+    }
     // user change 
     useEffect(() => {
         const unsuscribe = onAuthStateChanged(
@@ -34,7 +44,7 @@ const ShareData = ({ children }) => {
     const user = 'Sami'
     const pass = 'dddd'
 
-    const AuthInfo = { user, pass, CreateUserWithMail, DisplayUser }
+    const AuthInfo = { user, pass, CreateUserWithMail, DisplayUser, CreateUserWithGoogle }
     return (
         <SharedContext.Provider value={AuthInfo}>
             {children}

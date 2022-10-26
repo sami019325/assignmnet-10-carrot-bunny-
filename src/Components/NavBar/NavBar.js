@@ -20,11 +20,11 @@ const NavBar = () => {
             <div className='col-span-2 md:col-span-3 flex  justify-center items-center'>
                 <div className={`hidden lg:block `}>
                     <div className={`flex justify-end items-center gap-5 px-10`}>
-                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to='/course'>Course</Link>
+                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to='/course'></Link>
                         <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to=''>FAQ</Link>
                         <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to=''>Blog</Link>
                         <div className="dropdown dropdown-end ">
-                            <label tabIndex={0} className="btn m-auto w-12 h-12 rounded-full bg-slate-500">Click</label>
+                            <img tabIndex={0} className='  m-auto w-12 h-12 rounded-full bg-slate-500' src={DisplayUser.photoURL} alt="" srcset="" />
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <li><a>Item 1</a></li>
                                 <li><a>Item 2</a></li>
