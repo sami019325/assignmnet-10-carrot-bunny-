@@ -1,11 +1,25 @@
 import React from 'react';
 
 const Card = (card) => {
-    console.log(card)
+    console.log(card.CardData)
+    const { category_id } = card.CardData;
+    console.log()
     return (
         <div>
-            <h1>{card.CardData.Name}</h1>
-            <img src="" alt="" srcset="" />
+            <div id={`0${parseInt(category_id) + 1}`} className="card m-auto w-11/12 bg-base-100 shadow-xl">
+                <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+                <div className="card-body">
+                    <h2 className="card-title">
+                        Speaking
+                        <div className="badge badge-secondary">NEW</div>
+                    </h2>
+                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <div className="card-actions justify-end">
+                        <div className="badge badge-outline">Fashion</div>
+                        <div className="badge badge-outline">Products</div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

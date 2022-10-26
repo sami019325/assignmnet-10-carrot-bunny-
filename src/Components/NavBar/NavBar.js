@@ -7,7 +7,7 @@ import './NavBar.css'
 const NavBar = () => {
     const [IsBtnActive, setIsBtnActive] = useState(true)
     return (
-        <nav className='bg-yellow-500 h-20 grid grid-cols-6 sticky top-0'>
+        <nav className='bg-yellow-500 h-20 grid grid-cols-6 sticky top-0 z-50'>
             <div className='flex items-center justify-start pl-12 gap-3 px-3 col-span-4 md:col-span-3 '>
                 <Link to='/'> <img src={logo} className='w-12 h-12' alt="app logo a bunny" /></Link>
                 <Link to='/'>
