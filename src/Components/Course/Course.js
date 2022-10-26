@@ -27,19 +27,21 @@ const Course = () => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-3'>
             <main className='col-span-2 bg-lime-300'>
-                <Combocard key={courseData.category_id} course={courseData}></Combocard>
+                <Combocard course={courseData}></Combocard>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
                     {
                         courseData.map(course => <>
-                            <Card CardData={course}></Card>
+                            <Card key={courseData.category_id} CardData={course}></Card>
                         </>)
                     }
                 </div>
             </main>
             <aside className='sticky top-28'>
+
                 {
+
                     categoy.map(catgs => <>
-                        <div className='grid grid-cols-3 border bg-orange-600 border-yellow-500 m-auto w-10/12 mt-16 px-5 py-2 rounded-xl '>
+                        <div className='grid grid-cols-3 border bg-orange-600 border-yellow-500 m-auto w-10/12 mt-16 px-5 py-2 rounded-xl sticky top-28'>
                             <a href={`#${catgs.id}`} className='col-span-2 font-bold'>{catgs.name}</a>
                             <img src={catgs.img} className='w-10 h-10 bg-black' alt="" />
                         </div>
