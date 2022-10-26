@@ -4,12 +4,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainRouting from './Components/MainRouting';
 import Home from './Components/Home/Home';
 import Course from './Components/Course/Course';
+import CreateUserMail from './Components/User/CreateUserMail';
 
 const router = createBrowserRouter([
   {
     path: '/', element: <MainRouting />, children: [
       { path: '/', element: <Home /> },
-      { path: '/course', element: <Course /> }
+      { path: '/course', element: <Course /> },
+      { path: '/register', element: <CreateUserMail /> },
+
     ]
   },
   { path: '*', element: <div>$04</div> }

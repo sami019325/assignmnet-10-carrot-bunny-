@@ -3,11 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ShareData from './Components/User/ShareData';
+// import ShareData from './Components/User/ShareData';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ShareData>
+      <App />
+    </ShareData>
+    {/* <ShareData> */}
+    {/* </ShareData> */}
   </React.StrictMode>
 );
 

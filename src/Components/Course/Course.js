@@ -26,7 +26,7 @@ const Course = () => {
     }, [])
     return (
         <div className='grid grid-cols-1 md:grid-cols-3'>
-            <main className='col-span-2 bg-lime-300'>
+            <main className='col-span-2'>
                 <Combocard course={courseData}></Combocard>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
                     {

@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from './../../Resources/logo-of-assignmnet-10.png'
 import { BsList, BsPlus } from "react-icons/bs";
 import { useState } from 'react';
 import './NavBar.css'
+import { SharedContext } from '../User/ShareData';
 const NavBar = () => {
     const [IsBtnActive, setIsBtnActive] = useState(true)
+    const { user } = useContext(SharedContext)
     return (
         <nav className='bg-yellow-500 h-20 grid grid-cols-6 sticky top-0 z-50'>
             <div className='flex items-center justify-start pl-12 gap-3 px-3 col-span-4 md:col-span-3 '>
                 <Link to='/'> <img src={logo} className='w-12 h-12' alt="app logo a bunny" /></Link>
                 <Link to='/'>
-                    <h1 className='text-xl md:text-5xl text-slate-50 font-bold select-none'>Carrot Bunny</h1>
+                    <h1 className='text-xl md:text-5xl text-slate-50 font-bold select-none'>Carrot Bunny  </h1>
                 </Link>
             </div>
             <div className='col-span-2 md:col-span-3 flex  justify-center items-center'>
