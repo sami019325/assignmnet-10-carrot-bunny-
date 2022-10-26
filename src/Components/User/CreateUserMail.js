@@ -17,7 +17,7 @@ const CreateUserMail = () => {
         <>
             <h1 className='text-4xl font-bold text-center mt-6'>Please register to get full access</h1>
             <hr />
-            <div className='grid grid-cols-2 px-20 gap-10'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 px-10 gap-10'>
                 <form className='bg-indigo-500 p-12 w-full m-auto mt-6 rounded-3xl' onSubmit={handleCreateUser}>
                     <div>
                         <p className='text-white font-bold text-xl'>Name:</p>
@@ -33,10 +33,15 @@ const CreateUserMail = () => {
                         </div>
                     </div>
                 </form>
-                <div>
-                    <img className='w-40 m-auto' src={bunny} alt="" />
+                <div className='hidden lg:block'>
+                    <img className='w-60 m-auto' src={bunny} alt="" />
                     <div className='w-6/12 m-auto'>
-                        <h1 className='font-bold'>Advantages of register</h1>
+                        <h1 className='font-bold text-orange-600'>Advantages of register</h1>
+                        <ul className='text-slate-700 list-disc'>
+                            <li>get access to all routs</li>
+                            <li>Get our regular updates</li>
+                            <li>Get teachers' guideline</li>
+                        </ul>
                     </div>
                 </div>
             </div>
