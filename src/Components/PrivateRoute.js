@@ -1,26 +1,23 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Navigate, useLocation } from 'react-router-dom';
 
-import { history } from '_helpers';
+// import { history } from '_helpers';
+import { useContext } from 'react';
+import { SharedContext } from './User/ShareData';
 
-export { PrivateRoute };
-const PrivateRoute = () => {
-    return (
+const PrivateRoute = ({ children }) => {
+    // const auth = useContext(SharedContext)
+    // const location = useLocation()
 
+    // let from = location?.state?.from?.pathname || '/'
+    const { DisplayUser } = useContext(SharedContext)
+    if (!DisplayUser) {
+        // not logged in so redirect to login page with the return url
+        return <Navigate to="/" />
+    }
 
-        function PrivateRoute({ children }) {
-            const { user: authUser } = useSelector(x => x.auth);
-
-            if (!authUser) {
-                // not logged in so redirect to login page with the return url
-                return <Navigate to="/login" state={{ from: history.location }} />
-            }
-
-            // authorized so return child components
-            return children;
-        }
-    );
+    // authorized so return child components
+    return children;
 };
 
 export default PrivateRoute;

@@ -1,8 +1,13 @@
 import React, { useContext } from 'react';
+import { Navigate, useLocation } from 'react-router-dom';
 import { SharedContext } from './ShareData';
 
 const LogIn = () => {
     const { LogInUserWithMail } = useContext(SharedContext)
+
+    const location = useLocation()
+
+    let from = location?.state?.from?.pathname || '/'
 
     const logIntoUser = (e) => {
         const form = e.target;
@@ -10,6 +15,7 @@ const LogIn = () => {
         const password = e.target.password.value;
         LogInUserWithMail(email, password)
         form.reset()
+        Navigate('/', { replace: true })
     }
     return (
         <div>

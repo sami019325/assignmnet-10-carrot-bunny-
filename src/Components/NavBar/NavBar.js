@@ -27,8 +27,8 @@ const NavBar = () => {
                 <div className={`hidden lg:block `}>
                     <div className={`flex justify-end items-center gap-5 px-10`}>
                         <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to='/course'>Course</Link>
-                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to=''>FAQ</Link>
-                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to=''>Blog</Link>
+                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to='/faq'>FAQ</Link>
+                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to='/blog'>Blog</Link>
                         <div className="dropdown dropdown-end ">
                             <img tabIndex={0} className='  m-auto w-12 h-12 rounded-full bg-slate-500' src={DisplayUser.photoURL} alt="" />
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
@@ -49,9 +49,9 @@ const NavBar = () => {
                 </div>
                 <div className={` lg:hidden ${IsBtnActive ? 'hidden' : 'block fixed top-20 bottom-0 left-0 right-0 flex-col bg-blur '}`}>
                     <div className={`grid grid-cols-1 justify-end items-center gap-5 px-10 text-center`}>
-                        <Link className='p-5 flex-auto font-bold hover:bg-yellow-300 rounded-xl' to=''>Course</Link>
-                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to=''>FAQ</Link>
-                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to=''>Blog</Link>
+                        <Link className='p-5 flex-auto font-bold hover:bg-yellow-300 rounded-xl' to='/course'>Course</Link>
+                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to='/faq'>FAQ</Link>
+                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to='/blog'>Blog</Link>
                     </div>
 
                 </div>
