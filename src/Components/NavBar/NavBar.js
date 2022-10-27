@@ -7,8 +7,14 @@ import './NavBar.css'
 import { SharedContext } from '../User/ShareData';
 const NavBar = () => {
     const [IsBtnActive, setIsBtnActive] = useState(true)
-    const { user, DisplayUser } = useContext(SharedContext)
+    const { user, DisplayUser, signOutCall } = useContext(SharedContext)
+    const ShowBtn = DisplayUser.uid
+        ;
+    console.log(ShowBtn)
     console.log(DisplayUser)
+    const signOutFunction = () => {
+        signOutCall()
+    }
     return (
         <nav className='bg-yellow-500 h-20 grid grid-cols-6 sticky top-0 z-50'>
             <div className='flex items-center justify-start pl-12 gap-3 px-3 col-span-4 md:col-span-3 '>
@@ -20,14 +26,22 @@ const NavBar = () => {
             <div className='col-span-2 md:col-span-3 flex  justify-center items-center'>
                 <div className={`hidden lg:block `}>
                     <div className={`flex justify-end items-center gap-5 px-10`}>
-                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to='/course'></Link>
+                        <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to='/course'>Course</Link>
                         <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to=''>FAQ</Link>
                         <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to=''>Blog</Link>
                         <div className="dropdown dropdown-end ">
                             <img tabIndex={0} className='  m-auto w-12 h-12 rounded-full bg-slate-500' src={DisplayUser.photoURL} alt="" srcset="" />
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li><a>Item 1</a></li>
-                                <li><a>Item 2</a></li>
+                                {
+                                    ShowBtn ?
+                                        <li><button onClick={signOutFunction}>Log Out</button></li>
+                                        :
+                                        <>
+                                            <li><Link to='/login'>Log In</Link></li>
+                                            <li><Link to='register'>Register</Link></li>
+                                        </>
+                                }
+
                             </ul>
                         </div>
                     </div>
