@@ -4,16 +4,18 @@ import bunny from './../../Resources/—Pngtree—bunny with carrot illustration
 import googleImg from './../../Resources/Photos/google.png'
 import facebookImg from './../../Resources/Photos/fb_icon_325x325.png'
 const CreateUserMail = () => {
-    const { CreateUserWithMail, CreateUserWithGoogle } = useContext(SharedContext)
+    const { CreateUserWithMail, CreateUserWithGoogle, CreateUserWithFacebook, updateUserFunction } = useContext(SharedContext)
 
     const handleCreateUser = (e) => {
         e.preventDefault()
         const form = e.target;
         const name = e.target.name.value;
+        const image = e.target.image.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, email, password);
-        CreateUserWithMail(email, password)
+        console.log(name, image, email, password);
+        CreateUserWithMail(name, image, email, password)
+        form.reset()
     }
     return (
         <>
@@ -25,6 +27,8 @@ const CreateUserMail = () => {
                         <div>
                             <p className='text-white font-bold text-xl'>Name:</p>
                             <input className='font-xl pl-4 w-full' name='name' />
+                            <p className='text-white font-bold text-xl'>Image URL:</p>
+                            <input className='font-xl pl-4 w-full' name='image' />
                             <p className='text-white font-bold text-xl'>Mail:</p>
                             <input className='font-xl pl-4 w-full' name='email' type='email' />
                             <p className='text-white font-bold text-xl'>Password</p>
@@ -38,9 +42,9 @@ const CreateUserMail = () => {
                     </form>
                     <div className='grid grid-cols-3 mt-5 justify-center items-center border border-indigo-500 px-5 py-2 rounded-xl '>
                         <h1 className='col-span-2 font-bold'>You may also continue with</h1>
-                        <div className='grid grid-cols-2 m-3'>
+                        <div className='grid grid-cols-2 m-3 gap-3'>
                             <img className='w-12 cursor-pointer' onClick={CreateUserWithGoogle} src={googleImg} alt="" />
-                            <img className='w-12 cursor-pointer' src={facebookImg} alt="" />
+                            <img className='w-12 cursor-pointer' onClick={CreateUserWithFacebook} src={facebookImg} alt="" />
                         </div>
                     </div>
                 </div>

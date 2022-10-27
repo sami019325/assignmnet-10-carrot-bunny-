@@ -30,7 +30,7 @@ const NavBar = () => {
                         <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to=''>FAQ</Link>
                         <Link className='p-5 font-bold hover:bg-yellow-300 rounded-xl' to=''>Blog</Link>
                         <div className="dropdown dropdown-end ">
-                            <img tabIndex={0} className='  m-auto w-12 h-12 rounded-full bg-slate-500' src={DisplayUser.photoURL} alt="" srcset="" />
+                            <img tabIndex={0} className='  m-auto w-12 h-12 rounded-full bg-slate-500' src={DisplayUser.photoURL} alt="" />
                             <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
                                 {
                                     ShowBtn ?

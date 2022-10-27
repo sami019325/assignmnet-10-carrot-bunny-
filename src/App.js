@@ -5,6 +5,7 @@ import MainRouting from './Components/MainRouting';
 import Home from './Components/Home/Home';
 import Course from './Components/Course/Course';
 import CreateUserMail from './Components/User/CreateUserMail';
+import LogIn from './Components/User/LogIn';
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: '/course', element: <Course /> },
       { path: '/register', element: <CreateUserMail /> },
+      { path: '/login', element: <LogIn /> }
 
     ]
   },
