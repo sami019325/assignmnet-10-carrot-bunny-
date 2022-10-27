@@ -6,6 +6,7 @@ import Home from './Components/Home/Home';
 import Course from './Components/Course/Course';
 import CreateUserMail from './Components/User/CreateUserMail';
 import LogIn from './Components/User/LogIn';
+import Purchase from './Components/Course/Purchase';
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,8 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: '/course', element: <Course /> },
       { path: '/register', element: <CreateUserMail /> },
-      { path: '/login', element: <LogIn /> }
+      { path: '/login', element: <LogIn /> },
+      { path: '/purchase', element: <Purchase /> }
 
     ]
   },

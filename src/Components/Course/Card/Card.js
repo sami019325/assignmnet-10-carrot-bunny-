@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { SharedContext } from '../../User/ShareData';
 import DetailsModal from './DetailsModal';
 
@@ -12,7 +13,7 @@ const Card = (card) => {
     const { category_id, img, others_info, name, title, duration, price, _id } = card.CardData;
     console.log('details----------------', parseInt(courseId), details)
     useEffect(() => {
-        fetch(`https://sever-of-carrot-bunny-sami019325.vercel.app/course/1`)
+        fetch(`https://sever-of-carrot-bunny-sami019325.vercel.app/course/${parseInt(courseId)}`)
             .then(res => res.json())
             .then(data => setDetails(data))
     }, [courseId])
@@ -27,14 +28,14 @@ const Card = (card) => {
                         <div className="card-body">
                             <h2 className="card-title">
                                 {details.name}
-                                <div className="badge badge-secondary">{others_info.is_todays_pick}</div>
+                                <div className="badge badge-secondary">{others_info?.is_todays_pick}</div>
                             </h2>
                             <p>{title}</p>
                             <div className='text-slate-500'>
-                                <p>Duration: <span>{details.duration}</span></p>
+                                <p>Duration: <span>{details?.duration}</span></p>
                                 <p>Published: <span>{details.author?.published_date}</span></p>
-                                <p>Exam: <span>{details.exam}</span></p>
-                                <p>Price: <span>{details.price}</span></p>
+                                <p>Exam: <span>{details?.exam}</span></p>
+                                <p>Price: <span>{details?.price}</span></p>
                             </div>
                             <hr />
                             <div>
@@ -67,7 +68,7 @@ const Card = (card) => {
                     <div className="card-actions justify-end">
                         <label htmlFor="my-modal-5" onClick={() => SetCourseID(_id)} className="px-5 py-1 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white cursor-pointer badge-outline modal-button modal-button">Details</label>
                         {/* <div className=" px-5 py-1 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white cursor-pointer badge-outline modal-button" ></div> */}
-                        <div className=" px-5 py-1 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white cursor-pointer badge-outline">Buy</div>
+                        <Link onClick={() => SetCourseID(_id)} to='/purchase' className=" px-5 py-1 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white cursor-pointer badge-outline">Buy</Link>
                     </div>
                 </div>
             </div>
