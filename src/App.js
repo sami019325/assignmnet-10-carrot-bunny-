@@ -10,6 +10,7 @@ import Purchase from './Components/Course/Purchase';
 import PrivateRoute from './Components/PrivateRoute';
 import FAQ from './Components/FAQ';
 import Blog from './Components/Blog';
+import Nopage from './Components/ChackOut/noPage';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
 
     ]
   },
-  { path: '*', element: <div>$04</div> }
+  { path: '*', element: <Nopage /> }
 ])
 
 function App() {
