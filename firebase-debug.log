@@ -1,0 +1,14 @@
+[debug] [2022-10-27T15:22:42.553Z] ----------------------------------------------------------------------
+[debug] [2022-10-27T15:22:42.557Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-10-27T15:22:42.558Z] CLI Version:   11.15.0
+[debug] [2022-10-27T15:22:42.558Z] Platform:      win32
+[debug] [2022-10-27T15:22:42.558Z] Node Version:  v16.15.1
+[debug] [2022-10-27T15:22:42.559Z] Time:          Thu Oct 27 2022 21:22:42 GMT+0600 (Bangladesh Standard Time)
+[debug] [2022-10-27T15:22:42.560Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-27T15:22:42.676Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-27T15:22:42.677Z] > authorizing via signed-in user (raswakaraziam@gmail.com)
+[debug] [2022-10-27T15:22:42.677Z] [iam] checking project carrot-bunny for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-10-27T15:22:42.680Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/carrot-bunny:testIamPermissions [none]
+[debug] [2022-10-27T15:22:42.680Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/carrot-bunny:testIamPermissions x-goog-quota-user=projects/carrot-bunny
+[debug] [2022-10-27T15:22:42.681Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/carrot-bunny:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
