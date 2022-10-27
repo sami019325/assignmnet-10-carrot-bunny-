@@ -1,11 +1,57 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useContext } from 'react';
+import { SharedContext } from '../../User/ShareData';
+import DetailsModal from './DetailsModal';
 
 const Card = (card) => {
-    console.log(card.CardData)
-    const { category_id, img, others_info, name, title, duration, price } = card.CardData;
-    console.log(card.CardData.price)
+    const { courseId, SetCourseID } = useContext(SharedContext)
+    //const number = '00' + parseInt(courseId)
+    const [details, setDetails] = useState('')
+    const { category_id, img, others_info, name, title, duration, price, _id } = card.CardData;
+    console.log('details----------------', parseInt(courseId), details)
+    useEffect(() => {
+        fetch(`https://sever-of-carrot-bunny-sami019325.vercel.app/course/1`)
+            .then(res => res.json())
+            .then(data => setDetails(data))
+    }, [courseId])
     return (
         <div>
+            {/* modal  -------------------------*/}
+            <input type="checkbox" id="my-modal-5" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box w-11/12 max-w-5xl">
+                    <div id={category_id} className="card m-auto w-11/12 h-full bg-base-100 shadow-xl">
+                        <figure><img className='h-44 w-full' src={details?.img} alt="Shoes" /></figure>
+                        <div className="card-body">
+                            <h2 className="card-title">
+                                {details.name}
+                                <div className="badge badge-secondary">{others_info.is_todays_pick}</div>
+                            </h2>
+                            <p>{title}</p>
+                            <div className='text-slate-500'>
+                                <p>Duration: <span>{details.duration}</span></p>
+                                <p>Published: <span>{details.author?.published_date}</span></p>
+                                <p>Exam: <span>{details.exam}</span></p>
+                                <p>Price: <span>{details.price}</span></p>
+                            </div>
+                            <hr />
+                            <div>
+                                <img className='w-60 h-60 rounded-full m-auto' src={details.author?.img} alt="" />
+                                <h1 className='text-center font-bold text-xl'>Instructor: {details.author?.name}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="modal-action">
+                        <label htmlFor="my-modal-5" className="btn">Done</label>
+                    </div>
+                </div>
+            </div>
+            {/* modal end ---------------------- */}
+
+
+
             <div id={category_id} className="card m-auto w-11/12 h-full bg-base-100 shadow-xl">
                 <figure><img className='h-44 w-full' src={img} alt="Shoes" /></figure>
                 <div className="card-body">
@@ -19,12 +65,13 @@ const Card = (card) => {
                         <p>Price: <span>{price}</span></p>
                     </div>
                     <div className="card-actions justify-end">
-                        <div className=" px-5 py-1 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white cursor-pointer badge-outline">Details</div>
+                        <label htmlFor="my-modal-5" onClick={() => SetCourseID(_id)} className="px-5 py-1 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white cursor-pointer badge-outline modal-button modal-button">Details</label>
+                        {/* <div className=" px-5 py-1 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white cursor-pointer badge-outline modal-button" ></div> */}
                         <div className=" px-5 py-1 border border-orange-500 rounded-full hover:bg-orange-500 hover:text-white cursor-pointer badge-outline">Buy</div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

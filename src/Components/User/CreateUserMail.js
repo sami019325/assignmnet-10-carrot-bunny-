@@ -1,11 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { SharedContext } from './ShareData';
 import bunny from './../../Resources/—Pngtree—bunny with carrot illustration vector_5302230.png'
 import googleImg from './../../Resources/Photos/google.png'
 import facebookImg from './../../Resources/Photos/fb_icon_325x325.png'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const CreateUserMail = () => {
+    // const [registerBtn, setRegisterBtn] = useState(false)
     const { CreateUserWithMail, CreateUserWithGoogle, CreateUserWithFacebook, updateUserFunction } = useContext(SharedContext)
 
+    // register notification
+    const notify = () => {
+        const resolveAfter1Sec = new Promise(resolve => setTimeout(resolve, 1000));
+        toast.promise(
+            resolveAfter1Sec,
+            {
+                position: toast.POSITION.TOP_CENTER,
+                pending: 'Creating account',
+                success: 'Updating profile 👌',
+                error: 'failed to create profile 🤯'
+            }
+        )
+    }
+
+    // error notification
+    const errorNotify = () => {
+        toast.warn("Password did not match", {
+            position: toast.POSITION.TOP_RIGHT
+        });
+    }
     const handleCreateUser = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -13,12 +36,22 @@ const CreateUserMail = () => {
         const image = e.target.image.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, image, email, password);
-        CreateUserWithMail(name, image, email, password)
-        form.reset()
+        const confirmPass = e.target.confirmPass.value;
+        if (confirmPass === password) {
+            notify()
+            console.log(name, image, email, password);
+            CreateUserWithMail(name, image, email, password)
+            form.reset()
+        }
+        else {
+            errorNotify()
+            // alert('Password did not match')
+        }
+
     }
     return (
         <>
+            <ToastContainer />
             <h1 className='text-4xl font-bold text-center mt-6'>Please register to get full access</h1>
             <hr />
             <div className='grid grid-cols-1 lg:grid-cols-2 px-10 gap-10'>
@@ -26,17 +59,17 @@ const CreateUserMail = () => {
                     <form className='bg-indigo-500 p-12 w-full m-auto mt-6 rounded-3xl' onSubmit={handleCreateUser}>
                         <div>
                             <p className='text-white font-bold text-xl'>Name:</p>
-                            <input className='font-xl pl-4 w-full' name='name' />
+                            <input className='font-xl pl-4 w-full' name='name' required />
                             <p className='text-white font-bold text-xl'>Image URL:</p>
-                            <input className='font-xl pl-4 w-full' name='image' />
+                            <input className='font-xl pl-4 w-full' name='image' required />
                             <p className='text-white font-bold text-xl'>Mail:</p>
-                            <input className='font-xl pl-4 w-full' name='email' type='email' />
+                            <input className='font-xl pl-4 w-full' name='email' type='email' required />
                             <p className='text-white font-bold text-xl'>Password</p>
-                            <input className='font-xl pl-4 w-full' name='password' type="password" />
+                            <input className='font-xl pl-4 w-full' name='password' type="password" required />
                             <p className='text-white font-bold text-xl' >Confirm password</p>
-                            <input className='font-xl pl-4 w-full' type="password" />
+                            <input className='font-xl pl-4 w-full' type="password" name='confirmPass' required />
                             <div className='flex items-center '>
-                                <button type="submit" className='btn m-auto mt-4'>REGISTER</button>
+                                <button type="submit" className='btn m-auto mt-4' id='registerBtn' >REGISTER</button>
                             </div>
                         </div>
                     </form>

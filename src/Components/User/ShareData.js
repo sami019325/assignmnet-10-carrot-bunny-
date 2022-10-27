@@ -1,13 +1,15 @@
 
 import { createContext, useEffect, useState } from 'react';
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut, FacebookAuthProvider, updateProfile } from "firebase/auth"
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut, FacebookAuthProvider, updateProfile, signInWithEmailAndPassword } from "firebase/auth"
 import app from '../../Firebase/Firebase.config';
 
 const auth = getAuth(app)
 export const SharedContext = createContext()
-
 const ShareData = ({ children }) => {
     const [DisplayUser, setDisplayUser] = useState({ displayName: 'No User', photoURL: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg' })
+    const [courseId, SetCourseID] = useState('001')
+
+
     // Register 
     const CreateUserWithMail = (name, image, email, password) => {
         createUserWithEmailAndPassword(auth, email, password)
@@ -47,7 +49,17 @@ const ShareData = ({ children }) => {
             });
     }
 
-
+    // log in
+    const LogInUserWithMail = (email, password) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user)
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+    }
     // update user 
     const updateUserFunction = (name, image) => {
         updateProfile(auth.currentUser, { displayName: `${name}`, photoURL: `${image}` })
@@ -87,7 +99,7 @@ const ShareData = ({ children }) => {
     const user = 'Sami'
     const pass = 'dddd'
 
-    const AuthInfo = { user, pass, CreateUserWithMail, DisplayUser, CreateUserWithGoogle, CreateUserWithFacebook, signOutCall, updateUserFunction }
+    const AuthInfo = { user, pass, CreateUserWithMail, DisplayUser, CreateUserWithGoogle, CreateUserWithFacebook, signOutCall, updateUserFunction, LogInUserWithMail, courseId, SetCourseID }
     return (
         <SharedContext.Provider value={AuthInfo}>
             {children}
